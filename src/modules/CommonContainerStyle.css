@@ -4,3 +4,10 @@ button {
 button:disabled {
     background-color: #61dafb;
 }
+
+.count--max {
+   color: red;
+}
+.count {
+
+}

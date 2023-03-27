@@ -49,4 +49,3 @@ const [localMax,setLocalMax] = useState<number|"">()
     );
 };
 
-    //

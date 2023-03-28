@@ -4,15 +4,29 @@ import "./CommonContainerStyle.css"
 import Display from "./Display";
 import {SetMaxValue} from "./SetMaxValue";
 
+export const setLocalStorageMax = (maxValue:number) => {
+    localStorage.setItem("N", JSON.stringify(maxValue))
+}
+
+export const getLocalStorageMax = () => {
+  const resString =   localStorage.getItem("N")
+    if (!resString) return
+    return JSON.parse(resString)
+}
 export function Counter() {
 
     let [count, setCount] = useState(0)
-    let [maxValue, setMaxValue] = useState(5)
-    const handleInc = () => {
+    let [maxValue, setMaxValue] = useState(getLocalStorageMax() || 5)
 
+
+
+    const handleInc = () => {
         setCount(count + 1)
     }
+
     const handleRes = () => {
+        // localStorage.clear()
+        setMaxValue(5)
         setCount(0)
     }
         const countMax = `${count === maxValue ? "count--max" : "count"}`
@@ -21,7 +35,7 @@ export function Counter() {
         <>
             <Display count={count} classes={countMax} />
             <ButtonsContainer maxValueProps={maxValue} count={count} handleInc={handleInc} handleRes={handleRes}/>
-            <SetMaxValue  setMaxValue={setMaxValue}/>
+            <SetMaxValue maxValue={maxValue} setMaxValue={setMaxValue}/>
 
         </>
     )

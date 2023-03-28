@@ -2,7 +2,7 @@ button {
     background-color: green;
 }
 button:disabled {
-    background-color: #61dafb;
+    background-color: #a2a8a9;
 }
 
 .count--max {

@@ -1,8 +1,9 @@
 import React, {ChangeEvent,KeyboardEvent,MouseEvent, useState} from 'react';
 import './SetMaxValueStyle.scss'
-import {setLocalStorageMax} from "./Counter";
+import {setLocalStorageMax, getLocalStorageMax} from "./Counter";
 
 type SetMaxValuePropsType = {
+    setCount : React.Dispatch<React.SetStateAction<number>>
     clearLocalStorageMax: () => void
     maxValue: number
     setMaxValue: React.Dispatch<React.SetStateAction<number>> // типизация "функции" setF второго эл в массиве хука useState
@@ -28,8 +29,13 @@ const [localMax,setLocalMax] = useState<number|"">("") // создаем лок�
     }
     const setMax = (e: MouseEvent<HTMLButtonElement>)=>{ // отправка локального знач в функцию, котор устанавливает мах знач на верхнем уровне по клику кнопки
         props.setMaxValue(+localMax!)
-        setLocalStorageMax(+localMax!)
       setLocalMax("") // обнуление
+        console.log("s",+localMax! , getLocalStorageMax())
+
+        if (+localMax! <= getLocalStorageMax()) {
+            props.setCount(0)
+        }
+        setLocalStorageMax(+localMax!)
     }
     const onEnter = (e: KeyboardEvent<HTMLInputElement>) => { // по enter
 

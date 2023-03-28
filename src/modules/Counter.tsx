@@ -9,6 +9,7 @@ export const setLocalStorageMax = (maxValue:number) => {
 }
 
 export const getLocalStorageMax = () => {
+
   const resString =   localStorage.getItem("N")
     if (!resString) return
     return JSON.parse(resString)
@@ -37,7 +38,7 @@ export function Counter() {
         <>
             <Display count={count} classes={countMax} />
             <ButtonsContainer maxValueProps={maxValue} count={count} handleInc={handleInc} handleRes={handleRes}/>
-            <SetMaxValue clearLocalStorageMax={clearLocalStorageMax} maxValue={maxValue} setMaxValue={setMaxValue}/>
+            <SetMaxValue clearLocalStorageMax={clearLocalStorageMax} maxValue={maxValue} setMaxValue={setMaxValue} setCount={setCount} />
 
         </>
     )

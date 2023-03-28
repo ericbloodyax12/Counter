@@ -3,6 +3,7 @@ import './SetMaxValueStyle.scss'
 import {setLocalStorageMax} from "./Counter";
 
 type SetMaxValuePropsType = {
+    clearLocalStorageMax: () => void
     maxValue: number
     setMaxValue: React.Dispatch<React.SetStateAction<number>> // типизация "функции" setF второго эл в массиве хука useState
 }
@@ -49,6 +50,7 @@ const [localMax,setLocalMax] = useState<number|"">("") // создаем лок�
                     {/*подпись инпута sass тема*/}
                 </div>
                <button onClick={setMax} >Set</button>
+                <button onClick={props.clearLocalStorageMax}>Erase Local Storage</button>
             </div>
 
 

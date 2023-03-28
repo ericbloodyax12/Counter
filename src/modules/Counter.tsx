@@ -17,7 +17,9 @@ export function Counter() {
 
     let [count, setCount] = useState(0)
     let [maxValue, setMaxValue] = useState(getLocalStorageMax() || 5)
-
+    const clearLocalStorageMax = () => {
+        localStorage.clear()
+    }
 
 
     const handleInc = () => {
@@ -25,7 +27,7 @@ export function Counter() {
     }
 
     const handleRes = () => {
-        // localStorage.clear()
+
         setMaxValue(5)
         setCount(0)
     }
@@ -35,7 +37,7 @@ export function Counter() {
         <>
             <Display count={count} classes={countMax} />
             <ButtonsContainer maxValueProps={maxValue} count={count} handleInc={handleInc} handleRes={handleRes}/>
-            <SetMaxValue maxValue={maxValue} setMaxValue={setMaxValue}/>
+            <SetMaxValue clearLocalStorageMax={clearLocalStorageMax} maxValue={maxValue} setMaxValue={setMaxValue}/>
 
         </>
     )
